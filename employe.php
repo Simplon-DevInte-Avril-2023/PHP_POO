@@ -32,6 +32,19 @@ class Employe {
     function setNom($nom){
         $this->name = $nom;
     }
+
+    static function getEmployeById($id){
+        $bdd = new PDO('mysql:dbname=demotl;host=127.0.0.1','root', '');
+        $query = $bdd->query('SELECT * FROM employe WHERE id = ' . $id);
+        $unEmploye = $query->fetch();
+        return new Employe($unEmploye['id'], $unEmploye['department'], $unEmploye['email'], $unEmploye['name']);
+    }
+
+    static function updateEmploye($employe){
+        $bdd = new PDO('mysql:dbname=demotl;host=127.0.0.1','root', '');
+        $query = $bdd->prepare('UPDATE employe SET department = :dep, name = :nom, email = :email WHERE id = :id');
+        $query->execute(array('dep' => $employe->getDepartment(), 'nom' => $employe->getNom(), 'email' => $employe->getEmail(), 'id' => $employe->getId()));
+    }
 }
 
 ?>
