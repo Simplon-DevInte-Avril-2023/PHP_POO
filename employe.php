@@ -11,6 +11,27 @@ class Employe {
         $this->email = $email;
         $this->name = $name;
     }
+    function getId(){
+        return $this->id;
+    }
+    function getDepartment(){
+        return $this->department;
+    }
+    function setDepartment($department){
+        $this->department = $department;
+    }
+    function getEmail(){
+        return $this->email;
+    }
+    function setEmail($email){
+        $this->email = $email;
+    }
+    function getNom(){
+        return $this->name;
+    }
+    function setNom($nom){
+        $this->name = $nom;
+    }
 }
 
 ?>
